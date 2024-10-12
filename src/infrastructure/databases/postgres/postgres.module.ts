@@ -1,7 +1,7 @@
 import { Global, Module, Provider } from '@nestjs/common';
 import knex, { Knex } from 'knex';
 import { KNEX } from './constants/postgres';
-import * as knexConfig from 'config/knexfile';
+import * as knexConfig from 'knexfile';
 import { ConfigService } from '@nestjs/config';
 import { PostgresService } from './postgres.service';
 
