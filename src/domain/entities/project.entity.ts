@@ -5,5 +5,5 @@ export class Project {
     public createdBy: number,
     public name: string,
     public description: string,
-  ) { }
+  ) {}
 }

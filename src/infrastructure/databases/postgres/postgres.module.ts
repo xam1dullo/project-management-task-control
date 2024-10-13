@@ -18,4 +18,4 @@ const knexProvider: Provider = {
   providers: [knexProvider, PostgresService],
   exports: [knexProvider],
 })
-export class PostgresModule { }
+export class PostgresModule {}

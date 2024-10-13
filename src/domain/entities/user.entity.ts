@@ -4,5 +4,5 @@ export class User {
     public name: string,
     public role: 'Admin' | 'Manager' | 'Employee',
     public createdBy: number,
-  ) { }
+  ) {}
 }

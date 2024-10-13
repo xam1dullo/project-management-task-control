@@ -8,5 +8,5 @@ export class Task {
     public workerUserId: number,
     public status: 'CREATED' | 'IN_PROCESS' | 'DONE',
     public doneAt?: Date,
-  ) { }
+  ) {}
 }

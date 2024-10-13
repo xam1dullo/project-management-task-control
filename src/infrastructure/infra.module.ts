@@ -4,4 +4,4 @@ import { DatabasesModule } from './databases/databases.module';
 @Module({
   imports: [DatabasesModule],
 })
-export class InfraModule { }
+export class InfraModule {}
