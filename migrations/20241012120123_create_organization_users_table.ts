@@ -7,18 +7,15 @@ export async function up(knex: Knex): Promise<void> {
       .primary();
     table
       .integer('org_id')
-      .unsigned()
-      .notNullable()
       .references('id')
       .inTable('organizations')
       .onDelete('CASCADE');
     table
       .integer('user_id')
-      .unsigned()
-      .notNullable()
       .references('id')
       .inTable('users')
       .onDelete('CASCADE');
+
     table.timestamps(true, true);
 
     table.unique(['org_id', 'user_id']);

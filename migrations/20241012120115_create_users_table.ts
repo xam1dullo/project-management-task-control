@@ -16,15 +16,11 @@ export async function up(knex: Knex): Promise<void> {
       .notNullable();
     table
       .uuid('created_by')
-      .unsigned()
-      .notNullable()
       .references('id')
       .inTable('users')
       .onDelete('SET NULL');
     table.timestamps(true, true);
     table.index(['role']);
-
-
 
   });
   await knex.raw(`

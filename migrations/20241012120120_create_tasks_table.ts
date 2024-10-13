@@ -17,19 +17,15 @@ export async function up(knex: Knex): Promise<void> {
     table
       .timestamp('created_at')
       .defaultTo(knex.fn.now())
-      .notNullable();
+      .nullable();
     table
       .integer('project_id')
-      .notNullable()
-      .unsigned()
       .references('id')
       .inTable('projects')
       .onDelete('CASCADE');
     table.date('due_date').notNullable();
     table
       .integer('worker_user_id')
-      .nullable()
-      .unsigned()
       .references('id')
       .inTable('users')
       .onDelete('SET NULL');
