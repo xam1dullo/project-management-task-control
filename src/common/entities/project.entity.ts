@@ -1,7 +1,7 @@
-export class Organization {
+export class Project {
   constructor(
-    public id: number,
     public name: string,
+    public orgId: number,
     public createdBy: number,
   ) { }
 }

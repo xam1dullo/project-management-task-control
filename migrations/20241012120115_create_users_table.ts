@@ -6,29 +6,31 @@ export async function up(knex: Knex): Promise<void> {
       .increments('id')
       .primary();
     table
-      .string('name', 255)
+      .string('name')
+      .notNullable();
+
+    table
+      .enum('role', ['ADMIN', 'MANAGER', 'EMPLOYEE'])
+      .defaultTo('ADMIN')
       .notNullable();
     table
-      .enu('role', ['Admin', 'Manager', 'Employee'], {
-        useNative: true,
-        enumName: 'USER_ROLES'
-      })
-      .notNullable();
-    table
-      .uuid('created_by')
+      .integer('created_by')
+      .nullable()
       .references('id')
       .inTable('users')
       .onDelete('SET NULL');
+
     table.timestamps(true, true);
+
+
+
+    table.index(['login']);
     table.index(['role']);
 
   });
-  await knex.raw(`
-    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-  `);
+
 }
 
 export async function down(knex: Knex): Promise<void> {
   await knex.schema.dropTableIfExists('users');
-  await knex.raw(`DROP TYPE IF EXISTS "USER_ROLES";`);
 }

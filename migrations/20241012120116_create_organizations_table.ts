@@ -6,11 +6,11 @@ export async function up(knex: Knex): Promise<void> {
       .increments('id')
       .primary();
     table
-      .string('name', 255)
+      .string('name')
       .notNullable()
       .unique();
     table
-      .uuid('created_by')
+      .integer('created_by')
       .unsigned()
       .notNullable()
       .references('id')

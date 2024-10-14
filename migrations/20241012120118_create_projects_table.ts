@@ -18,9 +18,8 @@ export async function up(knex: Knex): Promise<void> {
       .inTable('users')
       .onDelete('SET NULL');
     table
-      .string('name', 255)
+      .string('name')
       .notNullable();
-    table.text('description').nullable();
 
     table.timestamps(true, true);
 

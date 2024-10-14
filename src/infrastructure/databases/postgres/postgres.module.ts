@@ -2,15 +2,15 @@ import { Global, Module, Provider } from '@nestjs/common';
 import knex, { Knex } from 'knex';
 import { KNEX } from './constants/postgres';
 import * as knexConfig from 'knexfile';
-import { ConfigService } from '@nestjs/config';
 import { PostgresService } from './postgres.service';
+import { ApplicationConfig } from '@config/index';
 
 const knexProvider: Provider = {
   provide: KNEX,
-  useFactory(configService: ConfigService): Knex {
-    return knex(knexConfig[configService.getOrThrow<string>('NODE_ENV')]);
+  useFactory(configService: ApplicationConfig): Knex {
+    return knex(knexConfig[configService.nodeEnv]);
   },
-  inject: [ConfigService],
+  inject: [ApplicationConfig],
 };
 
 @Global()
